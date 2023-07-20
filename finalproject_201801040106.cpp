@@ -43,3 +43,45 @@ public:
 		}
 	}
 };
+
+class Pemrograman : public MataKuliah {
+private:
+	float ujianTengahSemester;
+	float ujianAkhirSemester;
+
+public:
+	Pemrograman() {
+		ujianTengahSemester = 50;
+		ujianAkhirSemester = 60;
+	}
+
+	float hitungNilaiAkhir() {
+		float nilaiAkhir = (getPresensi() + activity + exercise + tugasAkhir + ujianTengahSemester + ujianAkhirSemester) / 6;
+		return nilaiAkhir;
+	}
+
+	void cekKelulusan() {
+		float nilaiAkhir = hitungNilaiAkhir();
+		if (nilaiAkhir >= 75) {
+			cout << "Anda lulus mata kuliah Pemrograman dengan nilai akhir " << nilaiAkhir << endl;
+		}
+		else {
+			cout << "Anda tidak lulus mata kuliah Pemrograman. Nilai akhir Anda " << nilaiAkhir << endl;
+		}
+	}
+
+	void input() {
+		float nilai;
+		cout << "Masukkan nilai ujian tengah semester: ";
+		cin >> nilai;
+		ujianAkhirSemester = nilai;
+	}
+};
+
+int main() {
+	Pemrograman pemrograman;
+	pemrograman.input();
+	pemrograman.cekKelulusan();
+
+	return 0;
+}
